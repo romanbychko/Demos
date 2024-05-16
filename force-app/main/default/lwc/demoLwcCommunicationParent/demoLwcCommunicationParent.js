@@ -94,9 +94,33 @@ export default class DemoLwcCommunicationParent extends LightningElement {
         }
     }
 
+	@wire(exampleMethodNoAttrApex)
+    exampleMethodApexNoAttrWire({ error, data }) {
+		console.log('Calling Apex no attributes using WIRE');
+        if (data) {
+            this.wireResult = data;
+            this.error = undefined;
+        } else if (error) {
+            this.error = error;
+            console.log('Error = ',error);
+        }
+    }
+
 	handleChildEvent(e) {
 		if(e.detail) {
 			this.fromChildEventResult = e.detail;
 		}
+	}
+
+	handleCallChildMethod() {
+		let children = this.template.querySelector('c-demo-lwc-communication-child');
+		if(children) {
+			if(Array.isArray(children)) {
+				children[0].setChildAttrPublicMethod('Test message from parent');
+			} else {
+				children.setChildAttrPublicMethod('Test message from parent');
+			}
+		}
+		
 	}
 }

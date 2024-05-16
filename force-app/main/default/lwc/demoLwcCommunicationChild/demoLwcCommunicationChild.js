@@ -7,6 +7,10 @@ export default class DemoLwcCommunicationChild extends LightningElement {
 
     @api attributeFromUpperLevel = 'default value';
 
+    @api setChildAttrPublicMethod(newValue) {
+        this.childAttr = newValue;
+    }
+
     childAttr = 'Default child attr value';
 
     attrFromMessageChannel = '';
