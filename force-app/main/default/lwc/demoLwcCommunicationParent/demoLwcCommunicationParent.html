@@ -1,0 +1,33 @@
+<template>
+	<lightning-card title="Parent LWC">
+		{componentName}
+		<div class="slds-box">
+			
+            <lightning-input type="text" onchange={handleTextChange} label="Attribute 1(Text)" value={attr1}></lightning-input>
+            <lightning-input type="checkbox" onchange={handleCheckboxChange} label="Attribute 2(Boolean)" value={attr2}></lightning-input>
+            <lightning-checkbox-group name="Attribute 3(List)"
+                              label="Attribute 3(List)"
+                              options={options}
+                              value={attr3}
+                              onchange={handleCheckboxGroupChange}></lightning-checkbox-group>
+			<br />
+			<lightning-button label="Call apex imperatively" onclick={callApexMethodsImperatively}></lightning-button>
+			<br />
+			Wire result - <b>{wireResult}</b>
+			<br />
+			Imperative result - <b>{imperativeResult}</b>
+			<br />
+			From child event result - <b>{fromChildEventResult}</b>
+			<br />
+			From message channel - <b>{fromMessageChannel}</b>
+			<br />
+			<c-demo-lwc-communication-child
+				component-name="Child1"
+				attribute-from-upper-level={attr1}
+				onevent_from_child={handleChildEvent}></c-demo-lwc-communication-child>
+		</div>
+		<div class="slds-box">
+			<c-demo-lwc-communication-child component-name="Child2" onevent_from_child={handleChildEvent}></c-demo-lwc-communication-child>
+		</div>
+	</lightning-card>
+</template>

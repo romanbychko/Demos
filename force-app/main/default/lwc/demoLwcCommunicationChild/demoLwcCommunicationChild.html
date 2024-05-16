@@ -1,0 +1,15 @@
+<template>
+  <lightning-card title="Child LWC" class="slds-border">
+    <div class="slds-box">
+      Name - {componentName}
+      <br />
+      Attribute from upper level - <b>{attributeFromUpperLevel}</b>
+      <br />
+      Attribute from message channel - <b>{attrFromMessageChannel}</b>
+      <br />
+      <lightning-input type="text" onchange={handleTextChange} label="Child attribute" value={childAttr}></lightning-input>
+      <lightning-button label="Pass attribute to parent" onclick={handlePassAttrToParent}></lightning-button>
+      <lightning-button label="Pass attribute to anyone (channel)" onclick={handlePassAttrChannel}></lightning-button>
+    </div>
+  </lightning-card>
+</template>
